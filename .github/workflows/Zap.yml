@@ -29,6 +29,7 @@ jobs:
           - name: Combine Reports
             run: |
               mkdir combined_report
+              chmod +w combined_report
               cp -r ${{env.ARTIFACT_NAME_1}}/ combined_artifacts/              
               cp -r ${{env.ARTIFACT_NAME_2 }}/* combined_artifacts/
               env:
