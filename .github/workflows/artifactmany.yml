@@ -38,7 +38,7 @@ jobs:
           - name: download
             uses: actions/download-artifact@v3
             with:
-              name: my-artifact
+              name: custom_name
     
           - name: Display structure of downloaded files
             run: ls -R
