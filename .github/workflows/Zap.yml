@@ -31,7 +31,7 @@ jobs:
               mkdir combined_report
               chmod +w combined_report
               cp -r ${{env.ARTIFACT_NAME_1}}/ combined_artifacts/              
-              cp -r ${{env.ARTIFACT_NAME_2 }}/* combined_artifacts/
+              cp -r ${{env.ARTIFACT_NAME_2 }}/ combined_artifacts/
               env:
                 ARTIFACT_NAME_1: ${{steps.zap_scan_1.outputs.ARTIFACT_NAME}}                
                 ARTIFACT_NAME_2: ${{steps.zap_scan_2.outputs.ARTIFACT_NAME}}
