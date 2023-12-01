@@ -33,5 +33,5 @@ jobs:
             uses: actions/upload-artifact@v3
             with:
               name: custom_name
-              path: .next/
+              artifact_name: "Fb"
  
