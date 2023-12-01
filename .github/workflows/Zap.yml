@@ -17,4 +17,3 @@ jobs:
           format: openapi
           target: 'https://www.zaproxy.org/'
           artifact_name: "Test1"
-          cmd_options: '-a'
