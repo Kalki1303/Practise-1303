@@ -28,14 +28,10 @@ jobs:
               allow_issue_writing: false
              # artifact_name: "Google"              
               format: openapi
-
-          
-          - name: path creation
-            run: mkdir -p ./github/worflows/zap_scan
               
           - name: Upload report
             uses: actions/upload-artifact@v3
             with:
               name: custom_name
-              path: ./github/worflows/zap_scan
+              path: .next/
  
