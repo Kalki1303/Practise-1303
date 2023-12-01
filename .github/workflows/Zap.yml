@@ -29,8 +29,9 @@ jobs:
           - name: Combine Reports
             run: |
               mkdir combined_artifacts
-              chmod +w combined_artifacts
-              cp -r ${{env.ARTIFACT_NAME_1}}/ combined_artifacts/              
+              sudo chmod +w combined_artifacts
+              cp -r ${{env.ARTIFACT_NAME_1}}/ combined_artifacts/
+              sudo chmod +w combined_artifacts
               cp -r ${{env.ARTIFACT_NAME_2 }}/ combined_artifacts/
               env:
                 ARTIFACT_NAME_1: ${{steps.zap_scan_1.outputs.ARTIFACT_NAME}}                
@@ -39,5 +40,5 @@ jobs:
           - name: Upload combined report
             uses: actions/upload-artifact@v2
             with:
-                name: combined-report
-                path: combined_report
+                name: combined-artifacts
+                path: combined_artifacts
