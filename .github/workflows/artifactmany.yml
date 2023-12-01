@@ -8,11 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    
-          - name: Adding secrets        
-            uses: actions/checkout@v3
-            with:  
-                token: ${{ secrets.WORKFLOW_OVERWRITE_TOKEN }}
 
           - name: Multiple type 2
             uses: zaproxy/action-api-scan@v0.5.0
