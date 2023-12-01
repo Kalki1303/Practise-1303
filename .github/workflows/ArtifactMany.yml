@@ -1,4 +1,4 @@
-name: artifact Many
+name: Artifact Many
 
 on:
   workflow_dispatch
@@ -10,17 +10,27 @@ jobs:
     steps:
           - name: Multiple type 1
             uses: zaproxy/action-api-scan@v0.5.0
-            with:
+            with:            
+              token: ${{ secrets.GITHUB_TOKEN }}
               target: 'https://www.google.com'
               allow_issue_writing: false
-              artifact_name: "Google"
+              artifact_name: "Google"              
+              format: openapi
 
           
           - name: Multiple type 2
             uses: zaproxy/action-api-scan@v0.5.0
             with:
+              token: ${{ secrets.GITHUB_TOKEN }}
               target: 'https://www.facebook.com/'
               allow_issue_writing: false
               artifact_name: "Fb"
-   
+              format: openapi
+
+              
+          - name: Upload report
+            uses: actions/upload-artifact@v3
+            with:
+              name: custom_name.zip
+              path: zap_scan.zip
  
