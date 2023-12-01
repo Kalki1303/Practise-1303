@@ -10,4 +10,4 @@ jobs:
           - name: ZAP Scan
             uses: zaproxy/action-api-scan@v0.5.0
             with:
-              target: 'https://www.example.com/graphql'
+              target: 'https://www.zaproxy.org/'
