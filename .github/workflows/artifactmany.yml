@@ -33,5 +33,13 @@ jobs:
             uses: actions/upload-artifact@v3
             with:
               name: custom_name
-              artifact_name: "Fb"
+              path: ./github/workflows
+              
+          - name: download
+            uses: actions/download-artifact@v3
+            with:
+              name: my-artifact
+    
+          - name: Display structure of downloaded files
+            run: ls -R
  
