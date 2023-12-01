@@ -15,7 +15,7 @@ jobs:
               target: 'https://www.google.com'
               fail_action: false
               allow_issue_writing: false
-              artifact_name: "Google"              
+             # artifact_name: "Google"              
               format: openapi
 
           
@@ -26,15 +26,15 @@ jobs:
               target: 'https://www.facebook.com/'
               fail_action: false
               allow_issue_writing: false
-              artifact_name: "Fb"
+             # artifact_name: "Fb"
               format: openapi
 
           - name: path creation
-            run: mkdir -p zap_scan
+            run: mkdir -p ./github/worflows/zap_scan
               
           - name: Upload report
             uses: actions/upload-artifact@v3
             with:
-              name: custom_name.zip
-              path: zap_scan
+              name: custom_name
+              path: ./github/worflows/zap_scan
  
