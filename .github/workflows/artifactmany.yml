@@ -8,11 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-          - name: Multiple type
+          - name: Multiple type 1
             uses: zaproxy/action-api-scan@v0.5.0
             with:
               target: 'https://www.google.com'
               allow_issue_writing: false
               artifact_name: "Google"
+
+          
+          - name: Multiple type 2
+            uses: zaproxy/action-api-scan@v0.5.0
+            with:
+              target: 'https://www.facebook.com/'
+              allow_issue_writing: false
+              artifact_name: "Fb"
    
  
