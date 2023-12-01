@@ -30,7 +30,7 @@ jobs:
             run: |
               mkdir -p combined_artifact &&
               chmod -R 777 combined_artifact &&
-              cp -r ${{ env.ARTIFACT_NAME_1}}/* comined_artifact/ && chmod -R +w combined_artifact/* && cp -r ${{env.ARTIFACT_NAME_2 }}/* combined_artifact/
+              cp -r ${{ env.ARTIFACT_NAME_1}}/* combined_artifact/ && chmod -R +w combined_artifact/* && cp -r ${{env.ARTIFACT_NAME_2 }}/* combined_artifact/
               env:
                 ARTIFACT_NAME_1: 'Company Site'     
                 ARTIFACT_NAME_2: 'W3 School'
