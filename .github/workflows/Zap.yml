@@ -38,7 +38,7 @@ jobs:
             run: |
               mkdir -p combined_artifact &&
               chmod -R 777 combined_artifact &&
-              cp -r ${{ env.ARTIFACT_NAME_1}}/* combined_artifact/ && chmod -R +w combined_artifact/* && cp -r ${{env.ARTIFACT_NAME_2 }}/* combined_artifact/
+              cp -r ${{ steps.zap_scan_1.outputs.ARTIFACT_NAME_1}}/* combined_artifact/ && chmod -R +w combined_artifact/* && cp -r ${{steps.zap_scan_2.outputs.ARTIFACT_NAME_2 }}/* combined_artifact/
               env:
                 ARTIFACT_NAME_1: 'Company Site'     
                 ARTIFACT_NAME_2: 'W3 School'
@@ -46,5 +46,5 @@ jobs:
           - name: Upload combined report
             uses: actions/upload-artifact@v2
             with:
-                name: combined-artifacts
+                name: combined-artifact
                 path: combined_artifact
