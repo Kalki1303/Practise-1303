@@ -13,3 +13,11 @@ jobs:
               target: 'https://www.zaproxy.org/'
               artifact_name: "Secutiyy test 1"
               allow_issue_writing: false
+
+              
+          - name: w3 School
+            uses: zaproxy/action-api-scan@v0.5.0
+            with:
+              target: 'https://www.w3schools.com/java/default.asp'
+              artifact_name: "Secutiy test 2"
+              allow_issue_writing: false
