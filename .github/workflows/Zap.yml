@@ -17,6 +17,10 @@ jobs:
               allow_issue_writing: false
             env:
               ARTIFACT_NAME: 'Company site'
+
+          - name: Clean up Artifact 
+            run: rm -rf ${{steps.zap_scan_1.outputs.ARTIFACT_NAME}}
+
               
           - name: w3 School
             uses: zaproxy/action-api-scan@v0.5.0
@@ -26,6 +30,10 @@ jobs:
             env:
               ARTIFACT_NAME: 'W3 School'
 
+          - name: Clean up Artifact 
+            run: rm -rf ${{steps.zap_scan_2.outputs.ARTIFACT_NAME}}
+
+
           - name: Combine Artifacts
             run: |
               mkdir -p combined_artifact &&
@@ -34,7 +42,7 @@ jobs:
               env:
                 ARTIFACT_NAME_1: 'Company Site'     
                 ARTIFACT_NAME_2: 'W3 School'
-
+          
           - name: Upload combined report
             uses: actions/upload-artifact@v2
             with:
