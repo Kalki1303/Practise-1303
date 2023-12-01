@@ -30,7 +30,7 @@ jobs:
             run: |
               mkdir combined_artifact &&
               chmod -R +w combined_artifact &&
-              cp -r ${{ env.ARTIFACT_NAME_1}} ${{env.ARTIFACT_NAME_2 }}/* combined_artifact/
+              cp -r ${{ env.ARTIFACT_NAME_1}}, ${{env.ARTIFACT_NAME_2 }}/* combined_artifact/
               env:
                 ARTIFACT_NAME_1: ${{steps.zap_scan_1.outputs.ARTIFACT_NAME}}                
                 ARTIFACT_NAME_2: ${{steps.zap_scan_2.outputs.ARTIFACT_NAME}}
