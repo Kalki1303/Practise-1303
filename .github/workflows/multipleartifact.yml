@@ -1,0 +1,39 @@
+name: Multiple Artifact Zap Security Test
+
+on: [push]
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: scan and combine artifact
+    
+    steps:
+          - name: ZAP Scan
+            uses: zaproxy/action-api-scan@v0.5.0
+            with:
+              target: 'http://httpbin.org/'
+              allow_issue_writing: false
+            env:
+              ARTIFACT_NAME: 'Company site 1'
+              
+          - name: w3 School
+            uses: zaproxy/action-api-scan@v0.5.0
+            with:
+              target: 'https://www.w3schools.com'
+              allow_issue_writing: false              
+            env:
+              ARTIFACT_NAME: 'W3 School'
+
+          - name: Combine Artifacts
+            run: |
+              mkdir combined_artifact &&
+              chmod -R +w combined_artifact &&
+              cp -r ${{ env.ARTIFACT_NAME}}/* combined_artifact/
+              env:
+                ARTIFACT_NAME_1: ${{steps.zap_scan_1.outputs.ARTIFACT_NAME}}                
+                ARTIFACT_NAME_2: ${{steps.zap_scan_2.outputs.ARTIFACT_NAME}}
+          - name: Upload combined report
+            uses: actions/upload-artifact@v2
+            with:
+                name: combined-artifacts
+                path: .github/workflows
