@@ -29,10 +29,12 @@ jobs:
               artifact_name: "Fb"
               format: openapi
 
+          - name: path creation
+            run: mkdir -p zap_scan
               
           - name: Upload report
             uses: actions/upload-artifact@v3
             with:
               name: custom_name.zip
-              path: zap_scan.zip
+              path: zap_scan
  
