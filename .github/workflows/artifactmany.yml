@@ -11,7 +11,7 @@ jobs:
           - name: Multiple type
             uses: zaproxy/action-api-scan@v0.5.0
             with:
-              target: 'https://www.google.com''https://reqres.in/'
+              target: 'https://www.google.com'
               allow_issue_writing: false
               artifact_name: "Google"
    
