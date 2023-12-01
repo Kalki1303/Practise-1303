@@ -5,6 +5,9 @@ on: [push]
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
+    name: scan and combine artifact
+    outputs:
+      artifacts: ${{steps.combine.outputs.artifacts}}
     
     steps:
           - name: ZAP Scan
@@ -13,9 +16,7 @@ jobs:
               target: 'https://www.zaproxy.org/'
               allow_issue_writing: false
             env:
-              ARTIFACT_NAME: Zap
-              
-
+              ARTIFACT_NAME: '1'
               
           - name: w3 School
             uses: zaproxy/action-api-scan@v0.5.0
@@ -23,16 +24,22 @@ jobs:
               target: 'https://www.w3schools.com/java/default.asp'
               allow_issue_writing: false              
             env:
-              ARTIFACT_NAME: w3
+              ARTIFACT_NAME: '2'
 
           - name: Combine Reports
             run: |
               mkdir combined_report
-              chmod +w  combined_report
-              cp -r ${{env.ARTIFACT_NAME}}/* combined_report/
+              chmod +w combined_report
+              cp -r ${{env.ARTIFACT_NAME_1}}/* combined_artifacts/
+              
+              cp -r ${{env.ARTIFACT_NAME_2}}/* combined_artifacts/
+              env:
+                ARTIFACT_NAME_1: ${{steps.zap_scan_1.outputs.ARTIFACT_NAME}}
+                
+                ARTIFACT_NAME_2: ${{steps.zap_scan_2.outputs.ARTIFACT_NAME}}
 
           - name: Upload combined report
             uses: actions/upload-artifact@v2
             with:
                 name: combined-report
-                path: combined-report
+                path: combined_report
