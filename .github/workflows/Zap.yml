@@ -13,18 +13,18 @@ jobs:
           - name: ZAP Scan
             uses: zaproxy/action-api-scan@v0.5.0
             with:
-              target: 'https://www.zaproxy.org/'
+              target: 'https://www.makemytrip.com/hotels/chennai-hotels.html'
               allow_issue_writing: false
             env:
-              ARTIFACT_NAME: '1'
+              ARTIFACT_NAME: 'MakeMyTrip'
               
           - name: w3 School
             uses: zaproxy/action-api-scan@v0.5.0
             with:
-              target: 'https://www.w3schools.com/java/default.asp'
+              target: 'https://www.w3schools.com'
               allow_issue_writing: false              
             env:
-              ARTIFACT_NAME: '2'
+              ARTIFACT_NAME: 'W3 School'
 
           - name: Combine Artifacts
             run: |
