@@ -5,6 +5,7 @@ on: [push]
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
+
     name: Scan the webapplication
     steps:
       - name: Checkout
